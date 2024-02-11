@@ -56,7 +56,22 @@ function findIndex(arr,left,right,searchValue){
 
 // scenario 2 Solution - Where the length of the array is unknown 
 
-function findIndexInUnknowArrLength(){
+
+function findIndexInUnknowArrLength(arr,left,right,searchValue){
+    let mid=Math.floor(left+(right-left)/2)
+    while(left<=right){
+
+        if(arr[mid] == searchValue && typeof(arr[mid-1])=="number"){
+            return mid
+        }else if(arr[mid]!=searchValue){
+            right=right*2
+            return findIndexInUnknowArrLength(arr,left,right,searchValue)
+        }else if(arr[mid]==searchValue && typeof(arr[mid-1])!="number"){
+            right=mid-1
+            return findIndexInUnknowArrLength(arr,left,right,searchValue)
+        }       
+    return -1
+    }
     
 }
 
@@ -66,6 +81,7 @@ const unsortedArray =[-23,45,78,56,1,2,-6,8,9,"&","&","&","&","&","&","&","&","&
 
 const bruteArray=[1,"&"]
 
+const unknowLenArr=[-23,45,78,56,1,"&","&","&","&","&","&","&","&","&","&","&","&","&","&","&","&","&","&"]
 
 
 const result  = findIndex(unsortedArray,left=0,right=25,searchValue="&")
@@ -79,4 +95,8 @@ const bruteForceResult = bruteForceFindIndex(bruteArray,searchValue="&")
 
 console.log(`bruteForeceSolution: ${bruteForceResult}`)
 
+
+const unknowLenArrIndex=findIndexInUnknowArrLength(unknowLenArr,left=1,right=1,searchValue="&")
+
+console.log(`unknowLenArrIndex:${unknowLenArrIndex}`)
 
