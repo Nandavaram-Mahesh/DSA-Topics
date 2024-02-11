@@ -27,9 +27,6 @@ function binarySearch(arr, left, right, searchValue) {
             return -1
         }
     }
-
-
-
 }
 
 
