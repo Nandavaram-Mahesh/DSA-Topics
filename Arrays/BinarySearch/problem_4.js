@@ -28,8 +28,39 @@ function findFirstFailedTest(arr,searchValue){
     return -1
 }
 
-const testsArray = [0,0,0,1,1,1,1,1,1]
+
+const testsArray = [0,0,0,0,1,1,1,1,1]
 
 const result = findFirstFailedTest(testsArray,searchValue=1)
 
 console.log(result)
+
+
+
+//  Optimized Solution Time Complexity-O(log n)
+ 
+function findFirstFailedTestIndex(arr,left,right,searchValue){ 
+
+    let mid = Math.floor(left+(right-left)/2)
+
+    while(left<=right){
+
+        if(arr[mid]===searchValue && arr[mid-1]!=searchValue){
+            return mid
+        }
+        else if(arr[mid]===searchValue && arr[mid-1]===searchValue){
+            right = mid-1
+            return findFirstFailedTestIndex(arr,left,right,searchValue)
+        }else if(arr[mid]!=searchValue){
+            left = mid+1
+            return findFirstFailedTestIndex(arr,left,right,searchValue)
+        }
+    return -1
+    }
+
+}
+
+
+const optResult = findFirstFailedTestIndex(testsArray,left=0,right=(testsArray.length)-1,searchValue=1)
+
+console.log(`optResult:${optResult}`)
