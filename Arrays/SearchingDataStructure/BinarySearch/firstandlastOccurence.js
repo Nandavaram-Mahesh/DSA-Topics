@@ -54,9 +54,13 @@ function findFirstLastIndex(arr,n,target){
 
 
 
-let n=9
+// let n=9
+// let n=5
+let n=1
 let x=5
-const arr = [1, 3, 5, 5, 5, 5, 67, 123, 125] 
+// const arr = [1, 3, 5, 5, 5, 5, 67, 123, 125] 
+const arr = [1, 3, 67, 123, 125]
+
 
 const result = findFirstLastIndex(arr,n,target=x)
 
