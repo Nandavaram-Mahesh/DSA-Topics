@@ -1,28 +1,30 @@
 
 function mergeProcedure(arr,leftIndex,mid,rightIndex){
+    /* n1 -> number of elements in the left subarray(i, mid) */
+    let n1 = mid-leftIndex+1 /*NoOfElements =  HigherIndex-lowerIndex+1*/
+    /* n2 -> number of elements in the right subarray(mid+1, j)*/
+    let n2 = rightIndex-mid /*NoOfElements =  HigherIndex-lowerIndex+1*/
 
-    let noOfLSAElements = mid-leftIndex+1
-    let noOfRSAElements = rightIndex-mid
-
-    let leftSubArray = [0]*noOfLSAElements
-    let rightSubArray=[0]*noOfRSAElements
+    let leftSubArray = new Array(n1)
+    let rightSubArray= new Array(n2)
 
 
     //  copy the elements from an array to the subarrays
-    for(let m=0;m<noOfLSAElements;m++){
+    for(let m=0;m<n1;m++){
         leftSubArray[m]=arr[leftIndex+m]
     }
         
     
-    for(let n=0;n<noOfRSAElements;n++){
+    for(let n=0;n<n2;n++){
         rightSubArray[n]=arr[mid+1+n]
     }
 
     let leftPointer =0
     let rightPointer = 0
-    let k = 0
+    let k = leftIndex
 
-    while(leftPointer<noOfLSAElements && rightPointer<noOfRSAElements){
+    //  returning a sorted subarray
+    while(leftPointer<n1 && rightPointer<n2){
 
             if(leftSubArray[leftPointer]<rightSubArray[rightPointer]){
                 arr[k] = leftSubArray[leftPointer]
@@ -37,12 +39,12 @@ function mergeProcedure(arr,leftIndex,mid,rightIndex){
             k+=1
     }
 
-    while(leftPointer<noOfLSAElements){
+    while(leftPointer<n1){
         arr[k] = leftSubArray[leftPointer]
         leftPointer+=1
         k+=1
     }
-    while(rightPointer<noOfRSAElements){
+    while(rightPointer<n2){
         arr[k] = rightSubArray[rightPointer]
         rightPointer+=1
         k+=1
