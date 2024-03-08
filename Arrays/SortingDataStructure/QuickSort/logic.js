@@ -35,8 +35,9 @@ function quickSort(arr,leftIndex,rightIndex){
 
 
 
-const arr = [50,40,70,10,30,90,45,67,79]
+// const arr = [50,40,70,10,30,90,45,67,79]
+const colorsArr = [2,0,2,1,1,0]
 
-const result =  quickSort(arr,0,(arr.length)-1) 
+const result =  quickSort(colorsArr,0,(colorsArr.length)-1) 
 console.log(result)
 

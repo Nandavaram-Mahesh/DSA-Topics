@@ -16,23 +16,26 @@ function partitionAlgorithm(arr, leftIndex, rightIndex) {
   
   function quickSort(arr, leftIndex, rightIndex) {
     
-     if (leftIndex < rightIndex) {
+    if(arr.length===1){
+      return arr[leftIndex]
+    }else{
+      while (leftIndex <= rightIndex) {
         
-      let position = partitionAlgorithm(arr, leftIndex, rightIndex);
-  
-      let mid = position - 1;
-  
-      if (k === position) {
-        return arr[mid];
-      } else if (k < position) {
-        return quickSort(arr, 0, mid - 1);
-      } else if (k > position) {
-        return quickSort(arr, mid + 1, rightIndex);
+        let position = partitionAlgorithm(arr, leftIndex, rightIndex);
+    
+        let mid = position - 1;
+    
+        if (k === position) {
+          return arr[mid];
+        } else if (k < position) {
+          rightIndex = mid-1
+        } else if (k > position) {
+         leftIndex = mid+1;
+        }
       }
     }
-    else{
-        return arr[leftIndex]
-    }
+
+
   }
   
   const arr = [
