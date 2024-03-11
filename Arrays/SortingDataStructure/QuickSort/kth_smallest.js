@@ -15,27 +15,21 @@ function partitionAlgorithm(arr, leftIndex, rightIndex) {
 }
 
 function quickSort(arr, leftIndex, rightIndex) {
-  
-  if(arr.length ===1){
-    return arr[leftIndex]
-  }else{
-    while(leftIndex <= rightIndex) {
-      let position = partitionAlgorithm(arr, leftIndex, rightIndex);
-  
-      let mid = position - 1;
-  
-      if (k === position) {
-        return arr[mid];
-      } else if (k < position) {
-        rightIndex=mid-1;
-      } else if (k > position) {
-        leftIndex = mid+1
-      }
-    } 
+  if (leftIndex < rightIndex) {
+    let position = partitionAlgorithm(arr, leftIndex, rightIndex);
 
+    let mid = position - 1;
+
+    if (k === position) {
+      return arr[mid];
+    } else if (k < position) {
+      rightIndex=mid-1;
+    } else if (k > position) {
+      leftIndex = mid+1
+    }
+  } else {
+    return arr[leftIndex];
   }
-
-
 }
 
 const arr = [
@@ -43,7 +37,7 @@ const arr = [
 ]; /* 5 20 25 40 52 66 68 79 89 97 */
 // const k = 2;
 // const k = 3;
-// const k = 5;
+const k = 5;
 
 const arr2 = [7, 10, 4, 3, 20, 15]; /*3 4 7 10 15 20 */
 
