@@ -105,6 +105,7 @@ class LinkedList:
         
         return self.tail
     
+   
     # Time Complexity- O(1)
     def deleteFromBegining(self):
         
@@ -114,8 +115,7 @@ class LinkedList:
         self.head = self.head.nextPtr
         self.tail.nextPtr = self.head
         
-
-
+        
     def printLinkedList(self):
         # create a temp pointer to traverse the linked list
         temp = self.head
