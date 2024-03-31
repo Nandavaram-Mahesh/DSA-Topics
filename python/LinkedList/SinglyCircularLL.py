@@ -10,7 +10,7 @@ class LinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
-        self.nodesCount=0
+
 
     # Time Complexity - O(1)
     def insertAtBegining(self,data):
@@ -20,12 +20,19 @@ class LinkedList:
         if self.head is None:
             self.head = new_node
             self.tail = new_node
+            # setting tail to the head to get circular property
+            self.tail.nextPtr = self.head
+            
         else:
             # copy the head to the new_node next pointer
             new_node.nextPtr = self.head
 
             # Set the head and tail to point to new_node
             self.head = new_node
+
+            # set tail nextPtr to the new_node/self.head
+
+            self.tail.nextPtr = self.head
         
         return self.tail.data
         # # set the tail to the head nextPointer
@@ -35,18 +42,25 @@ class LinkedList:
     def insertAtEnd(self,data):
         new_node = Node(data)
 
-        # check if nodes exists
-
+        # If no nodes exists 
         if self.head is None:
+            # setting head and tail to the new_node
             self.head = new_node
             self.tail = new_node
-            self.nodesCount+=1
+            # setting the tail nextPtr to the head to get circular property
+            self.tail.nextPtr = self.head
+
             return
         else:
-            self.tail.nextPtr = new_node
-            self.tail = new_node
-            self.nodesCount+=1
             
+            # if there is a node then setting tails nextPtr to the new_node 
+            self.tail.nextPtr = new_node
+            # then changing tail to the new_node
+            self.tail = new_node
+            # setting the tail nextPtr to the head to get circular property
+            self.tail.nextPtr = self.head
+
+
 
             # while self.tail.nextPtr is not None:
             #     self.tail = self.tail.nextPtr
@@ -55,9 +69,10 @@ class LinkedList:
             # self.tail = new_node 
 
             # return self.tail.data
-   
+    
+
     # Time Complexity - O(n)
-    def insertAfeterAnotherNode(self,data,index):
+    def insertAfterAnotherNode(self,data,index):
         new_node = Node(data)
         temp = self.head
         for i in range(0,(index-1)):
@@ -66,37 +81,41 @@ class LinkedList:
         new_node.nextPtr = temp.nextPtr
         temp.nextPtr = new_node
 
-    # Time Complexity- O(n)
+
+    # Need to work on this
+    # Time Complexity - O(n)
     def deleteAtEnd(self):
-        dummy_node = Node(nextPtr=self.head)
+        # dummy_node = Node(nextPtr=self.head)
         # check if nodes exists
         if self.head is None:
             return
         
-        curr = dummy_node
-        next = dummy_node
-        prev = dummy_node
+        curr = self.head
+        next = self.head
+        prev = self.head
         
-        while curr.nextPtr is not None:
+        while curr.nextPtr is not self.tail:
             next = curr.nextPtr
             prev = curr
             curr = next
         
-        prev.nextPtr = None
+        prev.nextPtr = self.head
         self.tail = prev
         
         
         return self.tail
     
-    #Time Complexity-O(1)    
+    # Time Complexity- O(1)
     def deleteFromBegining(self):
         
         if self.head is None:
             return
         
         self.head = self.head.nextPtr
+        self.tail.nextPtr = self.head
         
-        
+
+
     def printLinkedList(self):
         # create a temp pointer to traverse the linked list
         temp = self.head
@@ -113,11 +132,11 @@ LL=LinkedList()
 
 LL.insertAtBegining(20)
 LL.insertAtBegining(30)
-LL.insertAtEnd(10)
+LL.insertAtBegining(40)
 LL.insertAtBegining(50)
 LL.insertAtBegining(60)
 result = LL.insertAtBegining(70)
-print("Tail:",result)
+# print("Tail:",result)
 
 # Insert at End working Perfect
 # LL.insertAtEnd(20)
@@ -127,7 +146,7 @@ print("Tail:",result)
 # LL.insertAtEnd(60)
 # LL.insertAtEnd(70)
 
-# print()
+
 # LL.deleteAtEnd()
 # LL.deleteAtEnd()
 # LL.deleteAtEnd()
@@ -145,8 +164,7 @@ print("Tail:",result)
 # LL.deleteFromBegining()
 # LL.deleteFromBegining()
 # LL.deleteFromBegining()
-
-LL.insertAfeterAnotherNode(65,1)
+LL.insertAfterAnotherNode(65,1)
 LL.printLinkedList()
 
 
