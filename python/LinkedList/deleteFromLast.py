@@ -33,7 +33,7 @@ class LinkedList:
         temp.nextPtr = new_node  
     
     def deleteFromEnd(self,n):
-        dummy_node = LinkedList(nextPtr = self.head)
+        dummy_node = Node(nextPtr = self.head)
 
         temp = self.head
         count = 0
