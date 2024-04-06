@@ -85,7 +85,7 @@ class LinkedList:
         prev.nextPtr = None
         self.tail = prev
         
-        
+
         return self.tail
     
     #Time Complexity-O(1)    
@@ -96,7 +96,7 @@ class LinkedList:
         
         self.head = self.head.nextPtr
         
-        
+
     def printLinkedList(self):
         # create a temp pointer to traverse the linked list
         temp = self.head
@@ -113,7 +113,6 @@ LL=LinkedList()
 
 LL.insertAtBegining(20)
 LL.insertAtBegining(30)
-LL.insertAtEnd(10)
 LL.insertAtBegining(50)
 LL.insertAtBegining(60)
 result = LL.insertAtBegining(70)
@@ -139,14 +138,14 @@ print("Tail:",result)
 
 # Delete from begining is Working Perfect
 
-# LL.deleteFromBegining()
-# LL.deleteFromBegining()
-# LL.deleteFromBegining()
-# LL.deleteFromBegining()
-# LL.deleteFromBegining()
-# LL.deleteFromBegining()
+LL.deleteFromBegining()
+LL.deleteFromBegining()
+LL.deleteFromBegining()
+LL.deleteFromBegining()
+LL.deleteFromBegining()
+LL.deleteFromBegining()
 
-LL.insertAfeterAnotherNode(65,1)
+# LL.insertAfeterAnotherNode(65,1)
 LL.printLinkedList()
 
 
