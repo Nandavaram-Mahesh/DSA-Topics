@@ -10,12 +10,11 @@ class HashTable:
     def hashFunction(self,key):
         
         summation=0
-        m = 10
         for  i  in key:
             asciiValue = ord(i)
             summation+=asciiValue
         
-        return summation%m 
+        return summation%self.MAX
 
 
     # # Addition of Item in the hash table
