@@ -3,7 +3,7 @@ from collections import deque
 
 
 
-def findSingleElement(arr,left,right):
+def findSingleElement(nums,left,right):
     
     # Two pointers Approach - Time Complexity - O(N)
 
@@ -50,16 +50,32 @@ def findSingleElement(arr,left,right):
 
     # Stack Approach - Time Complexity - O(N) , space Complexity -O(N)
     
-    stack = deque()
+    # stack = deque()
 
-    for i in arr:
-        if i not in stack:
-            stack.append(i)
+    # for i in arr:
+    #     if i not in stack:
+    #         stack.append(i)
+    #     else:
+    #         stack.pop()
+
+    # return stack[-1] 
+
+    left = 0
+    right = len(nums)-1
+
+    while left!=right:
+
+        mid = left+(right-left)//2
+
+        if(mid%2==1):
+            mid-=1
+
+        if(nums[mid]==nums[mid+1]):
+            left = mid+2
         else:
-            stack.pop()
+            right = mid
 
-    return stack[-1] 
-
+    return nums[left]
 
 
 
