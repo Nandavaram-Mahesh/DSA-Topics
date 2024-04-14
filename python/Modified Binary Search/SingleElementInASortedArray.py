@@ -30,22 +30,35 @@ def findSingleElement(arr,left,right):
 
     # HashMap Approach - Time Complexity - O(N) , Space Complexity - O(N) 
         
-        hashMap = {}
-        for i in arr:
-            if i in hashMap:
-                  hashMap[i] += 1
-            else:
-                  hashMap[i] = 1 
+        # hashMap = {}
+        # for i in arr:
+        #     if i in hashMap:
+        #           hashMap[i] += 1
+        #     else:
+        #           hashMap[i] = 1 
         
-        # return hashMap
-        singleElem = 0
-        for key in hashMap.keys():
-              if(hashMap[key]==1):
-                singleElem = key
+        # # return hashMap
+        # singleElem = 0
+        # for key in hashMap.keys():
+        #       if(hashMap[key]==1):
+        #         singleElem = key
         
-        return arr[singleElem]
+        # return arr[singleElem]
 
- 
+   
+    #  -------------------------------------------------------------------------
+
+    # Stack Approach - Time Complexity - O(N) , space Complexity -O(N)
+    
+    stack = deque()
+
+    for i in arr:
+        if i not in stack:
+            stack.append(i)
+        else:
+            stack.pop()
+
+    return stack[-1] 
 
 
 
