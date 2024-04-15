@@ -45,6 +45,29 @@ class LinkedList:
             temp = temp.nextPtr
 
 
+def reverseInOrder(head1,head2,llist3):
+
+    # count the no of nodes in the Linked List
+    temp = head1
+    count = 0
+    while temp:
+        temp = temp.nextPtr
+        count+=1
+    
+    
+    
+    temp1 = head1
+    temp2 = head2
+    while count>(count//2):
+        if count%2==1:
+          llist3.insertAtEnd(temp1.nodeData)
+          temp1 = temp1.nextPtr
+        else:
+            llist3.insertAtEnd(temp2.nodeData)
+            temp2 = temp2.nextPtr
+        count-=1
+
+    
 
 llist1 = LinkedList()
 # llist1.insertAtEnd(4)
@@ -77,6 +100,10 @@ llist2.insertAtEnd(7)
 llist2.reversalOfLinkedList()
 llist2.printList()
 print("-----------------------------")
+llist3 = LinkedList()
+reverseInOrder(llist1.head,llist2.head,llist3=llist3)
+llist3.printList()
+
 
 
 
