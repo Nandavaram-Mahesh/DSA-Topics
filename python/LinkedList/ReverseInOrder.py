@@ -22,7 +22,7 @@ class LinkedList:
             temp = temp.nextPtr
         
         temp.nextPtr = new_node
-
+    # Time Complexity - O(N) , Space Complexity-O(N)
     def reversalOfLinkedList(self):
         prev = None
         curr = self.head
@@ -35,7 +35,57 @@ class LinkedList:
             curr = next
         
         self.head = prev
+
+
+    def inplaceReversalInOrder(self):
+
+        # If no head
+        if not self.head:
+            return self.head
+
+        ## Find the Middle Node of Linked List
         
+        # Use Tortoise and Hare Approach
+
+        tortoise = self.head
+        hare = self.head
+
+        while hare and hare.nextPtr:
+            tortoise = tortoise.nextPtr
+            hare = hare.nextPtr.nextPtr
+    
+        ## Reverse the second Half
+        prev = None
+        curr = tortoise
+        next = tortoise
+
+        while curr:
+
+            next = curr.nextPtr
+            curr.nextPtr = prev
+            prev = curr
+            curr = next
+        
+        ## Merge the First Half and the second Half
+        
+        # This points to the first element in the first half 
+        first = self.head
+        
+        # This points to the first element in the second half that is rotated
+        second = prev
+
+        while second.nextPtr:
+            temp = first.nextPtr
+            prev = second.nextPtr
+            first.nextPtr = second
+            second.nextPtr = temp
+            first = temp
+            second = prev
+
+
+
+    
+
 
     # print LinkedList
     def printList(self):
@@ -70,21 +120,23 @@ def reverseInOrder(head1,head2,llist3):
     
 
 llist1 = LinkedList()
-# llist1.insertAtEnd(4)
-# llist1.insertAtEnd(2)
-# llist1.insertAtEnd(7)
-# llist1.insertAtEnd(8)
-# llist1.insertAtEnd(9)
-# llist1.insertAtEnd(0)
-# llist1.insertAtEnd(2)
-# ------------------------
-
-llist1.insertAtEnd(0)
+llist1.insertAtEnd(1)
+llist1.insertAtEnd(2)
+llist1.insertAtEnd(3)
+llist1.insertAtEnd(4)
+llist1.insertAtEnd(5)
 llist1.insertAtEnd(6)
-llist1.insertAtEnd(7)
+
+llist1.printList()
+# ------------------------
+print("----------------------------")
+# llist1.insertAtEnd(0)
+# llist1.insertAtEnd(6)
+# llist1.insertAtEnd(7)
+llist1.inplaceReversalInOrder()
 llist1.printList()
 print("----------------------------")
-llist2 = LinkedList()
+# llist2 = LinkedList()
 # llist2.insertAtEnd(4)
 # llist2.insertAtEnd(2)
 # llist2.insertAtEnd(7)
@@ -93,16 +145,16 @@ llist2 = LinkedList()
 # llist2.insertAtEnd(0)
 # llist2.insertAtEnd(2)
 
-llist2.insertAtEnd(0)
-llist2.insertAtEnd(6)
-llist2.insertAtEnd(7)
+# llist2.insertAtEnd(0)
+# llist2.insertAtEnd(6)
+# llist2.insertAtEnd(7)
 
-llist2.reversalOfLinkedList()
-llist2.printList()
-print("-----------------------------")
-llist3 = LinkedList()
-reverseInOrder(llist1.head,llist2.head,llist3=llist3)
-llist3.printList()
+# llist2.reversalOfLinkedList()
+# llist2.printList()
+# print("-----------------------------")
+# llist3 = LinkedList()
+# reverseInOrder(llist1.head,llist2.head,llist3=llist3)
+# llist3.printList()
 
 
 
