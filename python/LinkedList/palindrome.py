@@ -53,7 +53,38 @@ class LinkedList:
 
         return True
 
+    def isLinkedListpalindrome(self):
+        tortoise = self.head
+        hare = self.head
 
+        while hare and hare.nextPtr:
+            tortoise = tortoise.nextPtr
+            hare = hare.nextPtr.nextPtr
+        
+        # return tortoise.data
+
+        prev = None
+        curr = tortoise.nextPtr
+        next = tortoise.nextPtr
+
+        while curr:
+            next = curr.nextPtr
+            curr.nextPtr = prev
+            prev = curr
+            curr = next
+
+        tortoise.nextPtr = prev
+
+        leftNode = self.head
+        rightNode = tortoise.nextPtr
+
+        while rightNode:
+            if(leftNode.data!=rightNode.data):
+                return False
+            leftNode = leftNode.nextPtr
+            rightNode = rightNode.nextPtr
+        return True
+    
     def printLinkedList(self):
         temp = self.head
         while temp:
@@ -63,14 +94,12 @@ class LinkedList:
 ## Driver code
 llist = LinkedList()
 llist.insertAtEnd(1)
+llist.insertAtEnd(2)
 llist.insertAtEnd(0)
-llist.insertAtEnd(0)
+llist.insertAtEnd(3)
 llist.insertAtEnd(1)
+# llist.printLinkedList()
+
+result = llist.isLinkedListpalindrome()
+print(result)
 llist.printLinkedList()
-
-result = llist.isPalindrome()
-
-if result:
-    print("It is palindrome")
-else:
-    print("It is not palindrome")
