@@ -27,7 +27,11 @@ def inOrderTraversal(root):
         print(root.nodeData)
         inOrderTraversal(root.right)
 
-
+def postOrderTraversal(root):
+    if root:
+        postOrderTraversal(root.left)
+        postOrderTraversal(root.right)
+        print(root.nodeData)
 
 node = Node(10)
 
@@ -40,8 +44,11 @@ root_node_left_right = insertNodeIntoSubTree(root_node_left,50,subTreeflag=False
 root_node_right_left = insertNodeIntoSubTree(root_node_right,60,subTreeflag=True)
 root_node_right_right = insertNodeIntoSubTree(root_node_right,70,subTreeflag=False)
 
-# Working Fine - Output: 10 20 40 50 30 60 70
+# Output: 10 20 40 50 30 60 70
 # preOrderTraversal(node)
 
 # Output: 40 20 50 10 60 30 70
-inOrderTraversal(node)
+# inOrderTraversal(node)
+
+# OutPut: 40 50 20 60 70 30 10
+postOrderTraversal(node)
