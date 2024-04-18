@@ -4,9 +4,9 @@ class Node:
         self.left = left
         self.nodeData = nodeData
 
-def insertNodeIntoSubTree(node,new_node_data,subTreeflag): 
+def insertNodeIntoSubTree(node,new_node_data,leftSubTreeflag): 
     if node:
-        if subTreeflag:
+        if leftSubTreeflag:
             node.left = Node(new_node_data)
             return node.left
         else:
@@ -35,14 +35,14 @@ def postOrderTraversal(root):
 
 node = Node(10)
 
-root_node_left = insertNodeIntoSubTree(node,20,subTreeflag=True)
-root_node_right = insertNodeIntoSubTree(node,30,subTreeflag=False)
+root_node_left = insertNodeIntoSubTree(node,20,leftSubTreeflag=True)
+root_node_right = insertNodeIntoSubTree(node,30,leftSubTreeflag=False)
 
-root_node_left_left = insertNodeIntoSubTree(root_node_left,40,subTreeflag=True)
-root_node_left_right = insertNodeIntoSubTree(root_node_left,50,subTreeflag=False)
+root_node_left_left = insertNodeIntoSubTree(root_node_left,40,leftSubTreeflag=True)
+root_node_left_right = insertNodeIntoSubTree(root_node_left,50,leftSubTreeflag=False)
 
-root_node_right_left = insertNodeIntoSubTree(root_node_right,60,subTreeflag=True)
-root_node_right_right = insertNodeIntoSubTree(root_node_right,70,subTreeflag=False)
+root_node_right_left = insertNodeIntoSubTree(root_node_right,60,leftSubTreeflag=True)
+root_node_right_right = insertNodeIntoSubTree(root_node_right,70,leftSubTreeflag=False)
 
 # Output: 10 20 40 50 30 60 70
 # preOrderTraversal(node)
