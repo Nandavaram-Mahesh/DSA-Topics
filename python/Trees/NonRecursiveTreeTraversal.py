@@ -42,6 +42,35 @@ def preOrderTraversal(root):
             stack.append(current_node.left)
 
 
+def postOrderTraversal(root):
+    stack1 = []
+    stack2= []
+
+    # Append the root node to the stack1
+    stack1.append(root)
+
+    while len(stack1)>0:
+
+        # pop the top element from stack1
+        popped = stack1.pop()
+
+        current_node = popped
+
+        # Append the popped element to the stack2
+        stack2.append(current_node)
+
+        # check if current_node has left node , if so append it to stack1 
+        if(current_node.left):
+            stack1.append(current_node.left)
+
+        # check if current_node has right node , if so append it to stack1
+        if(current_node.right):
+            stack1.append(current_node.right)
+
+    while len(stack2)>0:
+        popped = stack2.pop()
+        print(popped.nodeData)
+
 # Driver Code
 node = Node(10)
 
@@ -56,3 +85,8 @@ root_node_right_right = insertNodeIntoSubTree(root_node_right,70,leftSubTreeflag
 
 # output:10 20 40 50 30 60 70
 # preOrderTraversal(node)
+
+# outPut:40 50 20 60 70 30 10 
+postOrderTraversal(node)
+
+
