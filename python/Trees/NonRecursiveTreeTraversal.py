@@ -71,6 +71,31 @@ def postOrderTraversal(root):
         popped = stack2.pop()
         print(popped.nodeData)
 
+def inOrderTraversal(root):
+
+    stack=[]
+    
+    current_node = root
+
+    condition = True
+    
+    while condition:
+        
+        if current_node:
+            stack.append(current_node)
+            current_node = current_node.left
+    
+        elif len(stack)>0:
+            popped = stack.pop()
+            print(popped.nodeData)
+            current_node = popped.right
+        
+        # if stack is empty set condition to false
+        elif not len(stack)>0:
+            condition = False
+
+
+
 # Driver Code
 node = Node(10)
 
@@ -87,6 +112,7 @@ root_node_right_right = insertNodeIntoSubTree(root_node_right,70,leftSubTreeflag
 # preOrderTraversal(node)
 
 # outPut:40 50 20 60 70 30 10 
-postOrderTraversal(node)
+# postOrderTraversal(node)
 
 
+inOrderTraversal(node)
