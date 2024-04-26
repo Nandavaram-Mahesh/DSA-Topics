@@ -28,6 +28,8 @@ def insertIntoBST(root,val):
                 root.right = Node(val)    
 
                 
+# Search in Binary Tree
+
 
 
 # Deletion in the Binary Tree
