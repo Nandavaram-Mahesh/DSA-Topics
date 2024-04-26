@@ -8,7 +8,7 @@ class MaxHeap:
         # here we are appending value to the leaf node 
         self.heap.append(val)
         # then we are performing the percolateUp from bottom to top to ge the maxHeap property
-        self.__percolateUp(len(heap)-1)
+        self.__percolateUp(len(self.heap)-1)
     
     # Get the max val from the heap(i.e the top most element)
     # Time Complexity-O(1)
