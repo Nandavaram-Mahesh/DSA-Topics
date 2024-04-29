@@ -97,10 +97,10 @@ def inOrderTraversal(root):
 
 
 # Driver Code
-node = Node(10)
+root_node = Node(10)
 
-root_node_left = insertNodeIntoSubTree(node,20,leftSubTreeflag=True)
-root_node_right = insertNodeIntoSubTree(node,30,leftSubTreeflag=False)
+root_node_left = insertNodeIntoSubTree(root_node,20,leftSubTreeflag=True)
+root_node_right = insertNodeIntoSubTree(root_node,30,leftSubTreeflag=False)
 
 root_node_left_left = insertNodeIntoSubTree(root_node_left,40,leftSubTreeflag=True)
 root_node_left_right = insertNodeIntoSubTree(root_node_left,50,leftSubTreeflag=False)
@@ -115,4 +115,4 @@ root_node_right_right = insertNodeIntoSubTree(root_node_right,70,leftSubTreeflag
 # postOrderTraversal(node)
 
 
-inOrderTraversal(node)
+inOrderTraversal(root_node)
